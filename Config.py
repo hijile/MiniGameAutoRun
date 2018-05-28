@@ -4,7 +4,7 @@ location_on_pc = {
     'right_buttom_x': 450,
     'right_buttom_y': 650,
     'click_true_x': 130,
-    'click_true_y': 650,
+    'click_true_y': 800,
     'click_false_x': 330,
-    'click_false_y': 650
+    'click_false_y': 800
 }

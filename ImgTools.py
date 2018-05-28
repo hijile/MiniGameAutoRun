@@ -114,6 +114,7 @@ def recognize(img):
     """输入：经过裁剪的含有等式的区域图像"""
     #img = img.convert('L')
     img = binarize(img)
+    print(img)
 
     h_cut_imgs = horizontal_cut(img)
     chars1 = vertical_cut(h_cut_imgs[0])
@@ -144,8 +145,15 @@ def recognize(img):
 
 def getOneChar(lr, img):
     img = img.resize((20, 30), Image.LANCZOS).convert("L")
+    print("------------------")
+    print(img.size)
+    for k in np.array(img):
+        print(u''.join(str(i if i == 0 else 1) for i in k))
+
     img = np.array(img).reshape(1, -1)
     img[img == 255] = 1
+    print("------------------")
+    print(u''.join(str(i) for i in img[0]))
     y_hat = lr.predict(img)[0]
     if y_hat == 10:
         y_hat = '+'
@@ -165,10 +173,10 @@ def recognize_new(lr, img):
     #img = img.convert('L')
     img = binarize(img)
 
-    global oldimg
-    oldimg = np.array(img.convert('L'))
-    print(type(oldimg))
-    print(oldimg)
+    #global oldimg
+    #oldimg = np.array(img.convert('L'))
+    #print(type(oldimg))
+    #print(oldimg)
 
     h_cut_imgs = horizontal_cut(img)
     chars1 = vertical_cut(h_cut_imgs[0])
